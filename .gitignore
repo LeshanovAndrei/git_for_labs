@@ -5,6 +5,7 @@
 *.sln
 /LAB3/Debug
 /LAB3/.vs/LAB3/v16
+/LAB3/LAB3/Debug
 *.vcxproj
 *.filters
 *.user
