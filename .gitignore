@@ -8,3 +8,5 @@
 *.vcxproj
 *.filters
 *.user
+/OOP3lab/OOP3lab/Debug
+/OOP3lab/.vs/OOP3lab/v16

@@ -41,7 +41,7 @@ int main()
 		MenuPrint();
 		variant = Num(0, 9);
 	}
-	ReleaseDC(hwnd, hdc);
+	ReleaseDC(hwnd, hdc); 
 	return 0;
 }
 
