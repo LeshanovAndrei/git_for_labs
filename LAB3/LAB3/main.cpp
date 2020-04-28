@@ -49,7 +49,3 @@ int main()
 	ReleaseDC(hwnd, hdc); 
 	return 0;
 }
-
-
-
-
