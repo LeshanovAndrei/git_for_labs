@@ -11,7 +11,7 @@ public:
 	void Move();
 	void Increase();
 	void Reduce();
-	virtual void Draw(int, int, int);
+	virtual void Draw(int, int, int) = 0;
 
 protected:
 
