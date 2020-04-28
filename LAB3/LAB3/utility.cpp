@@ -36,3 +36,8 @@ int Num(int a, int b)
 	} //защита
 	return c - 48;
 }
+
+void HelpMenu()
+{
+	cout << "";
+}

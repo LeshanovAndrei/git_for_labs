@@ -5,3 +5,5 @@ void MenuPrint();
 void CreateMenuPrint();
 
 int Num(int, int);
+
+void HelpPrint();
