@@ -1,7 +1,7 @@
 #pragma once
 #include "header.h"
 
-class Circle : public Shape
+class Star : public Shape
 {
 public:
 	virtual void Draw(int, int, int);

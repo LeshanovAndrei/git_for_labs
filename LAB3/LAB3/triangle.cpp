@@ -26,3 +26,4 @@ void Triangle::Draw(int r, int g, int b)
 	}
 	DeleteObject(hPen);
 }
+
