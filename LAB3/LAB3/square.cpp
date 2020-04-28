@@ -12,5 +12,6 @@ void Square::Draw(int r, int g, int b)
 	{
 
 	}
+	DeleteObject(hPen);
 }
 
