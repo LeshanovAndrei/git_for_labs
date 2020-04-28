@@ -4,7 +4,7 @@
 class Triangle : public Shape
 {
 public:
-
+	virtual void Draw(int, int, int);
 
 private:
 

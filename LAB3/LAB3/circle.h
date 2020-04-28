@@ -1,10 +1,10 @@
 #pragma once
 #include "header.h"
 
-class Cirlce : public Shape
+class Circle : public Shape
 {
 public:
-
+	virtual void Draw(int, int, int);
 
 
 private:

@@ -11,11 +11,12 @@ public:
 	void Move();
 	void Increase();
 	void Reduce();
-	virtual void Draw();
+	virtual void Draw(int, int, int);
 
-private:
+protected:
 
 	int centerX;
 	int centerY;
 	int radius;
+	bool track;
 };

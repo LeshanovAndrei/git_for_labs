@@ -1,10 +1,15 @@
 #include "header.h"
 
+//Эти вещи сделаны глобально. Инициализируются и освобождаются в main
+HWND hwnd;
+HDC hdc;
+
+
 
 int main()
 {
-	HWND hwnd = GetConsoleWindow();
-	HDC hdc = GetDC(hwnd);
+	hwnd = GetConsoleWindow();
+	hdc = GetDC(hwnd);
 	int variant;
 	MenuPrint();
 	Rectangle(hdc, 300, 0, 800, 300);
