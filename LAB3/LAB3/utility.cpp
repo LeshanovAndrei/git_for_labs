@@ -8,8 +8,7 @@ void MenuPrint()
 		<< "4. Prev object\n"
 		<< "5. Control\n"
 		<< "6. Agregate all\n"
-		<< "7. Help\n"
-		<< "8. Refresh\n"
+		<< "7. Refresh\n"
 		<< "0. Exit\n"
 		<< "Enter number:";
 }
