@@ -15,7 +15,14 @@ public:
 	int Select();
 	void Select(int);
 	bool BorderCheck();
-	void Move();
+
+	//Контролы объекта
+	void Show();
+	void Hide();
+	void Move(int);
+	void Increase();
+	void Reduce();
+	void Track();
 
 private:
 	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
