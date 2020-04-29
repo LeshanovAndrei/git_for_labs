@@ -1,5 +1,6 @@
 #include "header.h"
 #include "current.h"
+#include "utility.h"
 
 
 extern HWND hwnd;
@@ -79,13 +80,13 @@ int Current::CollisionCheck(int i)
 
 bool Current::BorderCheck()
 {
-	if (currentSituation[selected]->GetX - currentSituation[selected]->GetRadius() < 300
-		or
-		currentSituation[selected]->GetY + currentSituation[selected]->GetRadius() > 900
-		or
-		currentSituation[selected]->GetX + currentSituation[selected]->GetRadius() > 1100
-		or
-		currentSituation[selected]->GetY - currentSituation[selected]->GetRadius() < 0)
+	if ((currentSituation[selected]->GetX()) - (currentSituation[selected]->GetRadius()) < 300
+		||
+		(currentSituation[selected]->GetY()) + (currentSituation[selected]->GetRadius()) > 900
+		||
+		(currentSituation[selected]->GetX()) + (currentSituation[selected]->GetRadius()) > 1100
+		||
+		(currentSituation[selected]->GetY()) - (currentSituation[selected]->GetRadius()) < 0)
 	{
 		return true;
 	}

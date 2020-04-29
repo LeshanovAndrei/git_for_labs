@@ -14,8 +14,8 @@ public:
 	void DelObj();
 	int Select();
 	void Select(int);
-	 
 	bool BorderCheck();
+
 private:
 	int CollisionCheck(int i);// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
 	int selected;
