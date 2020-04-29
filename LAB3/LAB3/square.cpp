@@ -3,7 +3,7 @@
 extern HWND hwnd;
 extern HDC hdc;
 
-void Square::Draw(int r, int g, int b)
+void Square::Draw()
 {
 	HPEN hPen = CreatePen(PS_SOLID, 3, RGB(r, g, b)); //Объявляется и создается кисть
 	SelectObject(hdc, hPen); //Объект делается текущим
@@ -21,7 +21,7 @@ void Square::Draw(int r, int g, int b)
 	Polyline(hdc, poly, 5);
 	if (track)
 	{
-		
+		SetPixel(hdc, centerX, centerY, RGB(r, g, b));
 	}
 	DeleteObject(hPen);
 }

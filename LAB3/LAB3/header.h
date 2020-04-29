@@ -11,7 +11,7 @@
 #include "shape.h"
 #include "square.h"
 #include "triangle.h"
-#include "circle.h"
+#include "star.h"
 #include "agregate.h"
 
 // additional

@@ -12,8 +12,9 @@ int main()
 	hdc = GetDC(hwnd);
 	int variant;
 	MenuPrint();
-	Rectangle(hdc, 300, 0, 800, 300);
+	Rectangle(hdc, 300, 0, 1200, 1000);
 	variant = Num(0, 9);
+	Shape* p = new Star;
 	while (variant)
 	{
 		switch (variant)

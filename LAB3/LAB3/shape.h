@@ -1,19 +1,25 @@
 #pragma once
 #include "header.h"
 
-class Shape abstract
+class Shape
 {
 public:
 	Shape();
 	Shape(const Shape&);
 	void Show();
 	void Hide();
-	void Move();
+	void Move(int, int);
 	void Increase();
 	void Reduce();
-	virtual void Draw(int, int, int) = 0;
+	void Track();
+	void SetColor(int, int, int);
+	virtual void Draw();
+	int GetX();
+	int GetY();
+	int GetRadius();
 
 protected:
+	int r, g, b;
 
 	int centerX;
 	int centerY;

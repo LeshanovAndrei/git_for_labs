@@ -17,8 +17,9 @@ void MenuPrint()
 void CreateMenuPrint()
 {
 	cout << "1. Square\n"
-		<< "2. Circle\n"
-		<< "3. Triangle\n";
+		<< "2. Star\n"
+		<< "3. Triangle\n"
+		<< "0. Cancel\n";
 }
 
 

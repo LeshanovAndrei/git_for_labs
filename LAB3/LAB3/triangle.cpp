@@ -4,7 +4,7 @@
 extern HWND hwnd;
 extern HDC hdc;
 
-void Triangle::Draw(int r, int g, int b)
+void Triangle::Draw()
 {
 	HPEN hPen = CreatePen(PS_SOLID, 3, RGB(r, g, b)); //Объявляется и создается кисть
 	SelectObject(hdc, hPen); //Объект делается текущим
@@ -20,7 +20,7 @@ void Triangle::Draw(int r, int g, int b)
 	Polyline(hdc, poly, 4);
 	if (track)
 	{
-
+		SetPixel(hdc, centerX, centerY, RGB(r, g, b));
 	}
 	DeleteObject(hPen);
 }

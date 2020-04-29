@@ -4,7 +4,7 @@
 class Star : public Shape
 {
 public:
-	virtual void Draw(int, int, int);
+	virtual void Draw();
 
 
 private:
