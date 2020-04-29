@@ -1,4 +1,5 @@
 #include "header.h"
+#include "utility.h"
 
 //Эти вещи сделаны глобально. Инициализируются и освобождаются в main
 HWND hwnd;
@@ -10,6 +11,8 @@ int main()
 {
 	hwnd = GetConsoleWindow();
 	hdc = GetDC(hwnd);
+	Current drawField;
+	int helpv;
 	int variant;
 	MenuPrint();
 	Rectangle(hdc, 300, 0, 1200, 1000);
@@ -21,24 +24,42 @@ int main()
 		{
 		case 1:
 			/*создание нового*/
-			break;	
+			drawField.AddObj();
 		case 2:
 			/*удаление выбранного*/
+			drawField.DelObj();
 			break;
 		case 3:
 			/*выбор следующего*/
+			drawField.Select(drawField.Select() + 1);
 			break;
 		case 4:
 			/*выбор предыдущего*/
+			drawField.Select(drawField.Select() - 1);
 			break;
 		case 5:
 			/*Меню управления объекта*/
+			cout << "For help press - F1" << endl;
+			do
+			{
+				helpv = _getch();
+				if (helpv == 59)
+					HelpMenu();
+			} while (helpv != 27);
+
+			break;
+		case 6:
+			/*Агрегирование всех объектов*/
+			break;
+		case 7:
+			/*Перезагрузка поля рисования*/
+			drawField.Refresh();
 			break;
 		case 8:
-			/*Перезагрузка поля рисования*/
+			/*Запись конфигурации в файл*/
 			break;
-		case 9:
-			/*помощь*/
+		case 0:
+			/*Выход*/
 			break;
 		default:
 			break;
