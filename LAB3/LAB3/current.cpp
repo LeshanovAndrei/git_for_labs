@@ -70,7 +70,7 @@ int Current::CollisionCheck(int i)
 	for (; i < currentSituation.Size(); i++)
 	{
 		if ((currentSituation[selected]->GetRadius() + currentSituation[i]->GetRadius()
-			>
+			>=
 			CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
 		{
 			return i;
