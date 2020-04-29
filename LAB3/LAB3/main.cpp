@@ -57,6 +57,9 @@ int main()
 			break;
 		case 8:
 			/*Запись конфигурации в файл*/
+			char adres[260];
+			cin >> adres;
+			drawField.WriteFile(adres);
 			break;
 		case 0:
 			/*Выход*/
