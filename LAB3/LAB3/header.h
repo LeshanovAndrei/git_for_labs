@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <tchar.h>
 #include <conio.h>
-
+#include <cmath>
 
 // shapes
 #include "shape.h"
