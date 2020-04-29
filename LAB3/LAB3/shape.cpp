@@ -105,3 +105,16 @@ int Shape::GetRadius()
 {
     return radius;
 }
+
+void Shape::SetX(int x)
+{
+    centerX = x;
+}
+void Shape::SetY(int x)
+{
+    centerY = x;
+}
+void Shape::SetRadius(int x)
+{
+    radius = x;
+}

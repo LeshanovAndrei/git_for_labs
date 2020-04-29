@@ -7,11 +7,15 @@ HDC hdc;
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
 	hwnd = GetConsoleWindow();
 	hdc = GetDC(hwnd);
 	Current drawField;
+	if (argc > 1)
+	{
+		drawField.FromFile(argv[1]);
+	}
 	int helpv;
 	int variant;
 	MenuPrint();

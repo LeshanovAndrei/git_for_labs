@@ -171,3 +171,45 @@ void Current::WriteFile(char* adres)
 	else
 		cout << "File writing Error!!!";
 }
+
+
+void Current::FromFile(char* adres)
+{
+	Shape* tempShape;
+	ifstream fin;
+	
+	fin.open(adres);
+	if (fin.is_open())
+	{
+		for (; !fin.eof();)
+		{
+			int tmp;
+			fin >> tmp;//Òèï
+			switch (tmp)
+			{
+			case 1:
+				tempShape = new Square;
+				break;
+			case 2 :
+				tempShape = new Star;
+				break;
+			case 3:
+				tempShape = new Triangle;
+				break;
+			default:
+				break;
+			}
+			fin >> tmp;
+			tempShape->SetX(tmp);
+			fin >> tmp;
+			tempShape->SetY(tmp);
+			fin >> tmp;
+			tempShape->SetRadius(tmp);
+		}
+		currentSituation.Add(tempShape);
+	}
+	else
+	{
+		cout << "File reading error!!!";
+	}
+}
