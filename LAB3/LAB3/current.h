@@ -26,6 +26,7 @@ public:
 
 	//Файлы
 	void WriteFile(char*);
+	void FromFile(char*);
 
 private:
 	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры

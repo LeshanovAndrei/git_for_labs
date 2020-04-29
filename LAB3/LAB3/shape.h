@@ -20,6 +20,9 @@ public:
 	int GetRadius();
 	virtual int GetType();
 
+	void SetX(int);
+	void SetY(int);
+	void SetRadius(int);
 protected:
 	int r, g, b;
 
