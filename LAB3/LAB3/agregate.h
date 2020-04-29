@@ -1,11 +1,11 @@
 #pragma once
 #include "vector.h"
-
+#include "current.h"
 
 class Agregate : public Shape
 {
 public:
-	Agregate(vctor<Shape>);
+	Agregate(Current);
 
 
 private:

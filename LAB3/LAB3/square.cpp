@@ -7,6 +7,15 @@ void Square::Draw()
 {
 	HPEN hPen = CreatePen(PS_SOLID, 3, RGB(r, g, b)); //Объявляется и создается кисть
 	SelectObject(hdc, hPen); //Объект делается текущим
+	if (track)
+	{
+
+
+		for (size_t i = 0; i < tracking.Size(); i++)
+		{
+			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
+		}
+	}
 	POINT poly[5];
 	poly[0].x = centerX - (radius / 1.414);
 	poly[0].y = centerY - (radius / 1.414);
@@ -19,10 +28,7 @@ void Square::Draw()
 	poly[4].x = centerX - (radius / 1.414);
 	poly[4].y = centerY - (radius / 1.414);
 	Polyline(hdc, poly, 5);
-	if (track)
-	{
-		SetPixel(hdc, centerX, centerY, RGB(r, g, b));
-	}
+	
 	DeleteObject(hPen);
 }
 

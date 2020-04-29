@@ -61,8 +61,11 @@ int Current::Select()
 
 void Current::Select(int x)
 {
-	selected = x;
-	currentSituation[selected]->SetColor(255, 0, 0);
+	if (x < currentSituation.Size() || x < 0)
+	{
+		selected = x;
+		currentSituation[selected]->SetColor(255, 0, 0);
+	}
 	Refresh();
 }
 
@@ -73,8 +76,6 @@ void Current::CollisionCheck()
 		currentSituation[i]->SetColor(0, 0, 0);
 		if (i != selected)
 		{
-
-
 			if ((currentSituation[selected]->GetRadius() + currentSituation[i]->GetRadius()
 				>=
 				CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
@@ -104,3 +105,53 @@ bool Current::BorderCheck()
 	}
 }
 
+void Current::Show()
+{
+	currentSituation[selected]->Show();
+	Refresh();
+}
+
+void Current::Hide()
+{
+	currentSituation[selected]->Hide();
+	Refresh();
+}
+
+void Current::Increase()
+{
+	currentSituation[selected]->Increase();
+	Refresh();
+}
+
+void Current::Reduce()
+{
+	currentSituation[selected]->Reduce();
+	Refresh();
+}
+
+void Current::Track()
+{
+	currentSituation[selected]->Track();
+	Refresh();
+}
+
+void Current::Move(int push)
+{
+	switch (push)
+	{
+	case 72:
+		currentSituation[selected]->Move(0, -2);
+		break;
+	case 80:
+		currentSituation[selected]->Move(0, 2);
+		break;
+	case 77:
+		currentSituation[selected]->Move(2, 0);
+		break;
+	case 75:
+		currentSituation[selected]->Move(-2, 0);
+		break;
+	default:
+		break;
+	}
+}
