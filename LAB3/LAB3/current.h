@@ -24,6 +24,9 @@ public:
 	void Reduce();
 	void Track();
 
+	//Файлы
+	void WriteFile(char*);
+
 private:
 	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
 	int selected;

@@ -32,3 +32,7 @@ void Square::Draw()
 	DeleteObject(hPen);
 }
 
+int Square::GetType()
+{
+	return 1;
+}

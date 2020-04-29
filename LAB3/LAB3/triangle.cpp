@@ -34,3 +34,7 @@ void Triangle::Draw()
 	DeleteObject(hPen);
 }
 
+int Triangle::GetType()
+{
+	return 3;
+}

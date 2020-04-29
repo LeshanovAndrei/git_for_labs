@@ -5,6 +5,7 @@ class Star : public Shape
 {
 public:
 	virtual void Draw();
+	virtual int GetType();
 
 
 private:

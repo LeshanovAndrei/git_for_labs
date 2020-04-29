@@ -18,6 +18,7 @@ public:
 	int GetX();
 	int GetY();
 	int GetRadius();
+	virtual int GetType();
 
 protected:
 	int r, g, b;

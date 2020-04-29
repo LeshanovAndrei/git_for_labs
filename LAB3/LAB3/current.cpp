@@ -155,3 +155,19 @@ void Current::Move(int push)
 		break;
 	}
 }
+
+
+void Current::WriteFile(char* adres)
+{
+	ofstream out;
+	out.open(adres);
+	if (out.is_open())
+	{
+		for (size_t i = 0; i < currentSituation.Size(); i++)
+		{
+			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX << ' ' << currentSituation[i]->GetY << ' ' << currentSituation[i]->GetRadius() << endl;
+		}
+	}
+	else
+		cout << "File writing Error!!!";
+}

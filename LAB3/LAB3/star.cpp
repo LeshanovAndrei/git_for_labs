@@ -36,3 +36,8 @@ void Star::Draw()
 	}
 	DeleteObject(hPen);
 }
+
+int Star::GetType()
+{
+	return 2;
+}
