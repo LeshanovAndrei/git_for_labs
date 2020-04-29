@@ -20,6 +20,11 @@ Shape::Shape():
     Show();
 }
 
+Shape::~Shape()
+{
+    Hide();
+}
+
 Shape::Shape(const Shape& n):
     centerX(n.centerX),
     centerY(n.centerY),
@@ -46,6 +51,10 @@ void Shape::Hide()
 
 void Shape::Move(int dX, int dY)
 {
+    if (track)
+    {
+        tracking.Add({ centerX, centerY });
+    }
     Hide();
     centerX += dX;
     centerY += dY;
@@ -68,7 +77,13 @@ void Shape::Reduce()
 
 void Shape::Track()
 {
-    track = 1;
+    if (track)
+    {
+        tracking.Clear();
+        track = 0;
+    }
+    else
+        track = 1;
 }
 
 void Shape::Draw()

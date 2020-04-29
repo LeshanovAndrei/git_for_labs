@@ -8,6 +8,15 @@ void Triangle::Draw()
 {
 	HPEN hPen = CreatePen(PS_SOLID, 3, RGB(r, g, b)); //Объявляется и создается кисть
 	SelectObject(hdc, hPen); //Объект делается текущим
+	if (track)
+	{
+
+
+		for (size_t i = 0; i < tracking.Size(); i++)
+		{
+			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
+		}
+	}
 	POINT poly[4];
 	poly[0].x = centerX;
 	poly[0].y = centerY - radius;

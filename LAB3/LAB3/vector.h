@@ -18,6 +18,7 @@ public:
 	void Del(T num);// Для удаления элемента вектор будем сужать
 	int Size() { return size; }
 	void Show();
+	void Clear();
 	T& operator[ ] (int i);
 	vctor<T>& operator =(vctor&);
 
@@ -199,3 +200,11 @@ vctor<T>& vctor<T>:: operator=(vctor& a) {
 }
 
 //-------------------------------------------------------------------
+template<typename T>
+void vctor<T>::Clear()
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		Del(vec[i]);
+	}
+}

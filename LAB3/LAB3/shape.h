@@ -5,6 +5,7 @@ class Shape
 {
 public:
 	Shape();
+	~Shape();
 	Shape(const Shape&);
 	void Show();
 	void Hide();
@@ -25,4 +26,5 @@ protected:
 	int centerY;
 	int radius;
 	bool track;
+	vctor<POINT> tracking;
 };
