@@ -14,6 +14,7 @@ Current::Current()
 void Current::Refresh()
 {
 	Rectangle(hdc, 300, 0, 1200, 1000);
+	CollisionCheck();
 	for (size_t i = 0; i < currentSituation.Size(); i++)
 	{
 		currentSituation[i]->Draw();
@@ -65,15 +66,22 @@ void Current::Select(int x)
 	Refresh();
 }
 
-int Current::CollisionCheck(int i)
+void Current::CollisionCheck()
 {
-	for (; i < currentSituation.Size(); i++)
+	for (int i = 0; i < currentSituation.Size(); i++)
 	{
-		if ((currentSituation[selected]->GetRadius() + currentSituation[i]->GetRadius()
-			>=
-			CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
+		currentSituation[i]->SetColor(0, 0, 0);
+		if (i != selected)
 		{
-			return i;
+
+
+			if ((currentSituation[selected]->GetRadius() + currentSituation[i]->GetRadius()
+				>=
+				CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
+			{
+				currentSituation[selected]->SetColor(0, 255, 0);
+				currentSituation[i]->SetColor(0, 255, 0);
+			}
 		}
 	}
 }

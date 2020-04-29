@@ -15,9 +15,10 @@ public:
 	int Select();
 	void Select(int);
 	bool BorderCheck();
+	void Move();
 
 private:
-	int CollisionCheck(int i);// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
+	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
 	int selected;
 	vctor<Shape*> currentSituation;
 
