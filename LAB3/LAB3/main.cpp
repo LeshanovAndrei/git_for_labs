@@ -51,6 +51,9 @@ int main(int argc, char* argv[])
 				helpv = _getch();
 				if (helpv == 59)
 					HelpMenu();
+				else
+					drawField.Move(helpv);
+				
 			} while (helpv != 27);
 
 			break;

@@ -39,7 +39,7 @@ int Num(int a, int b)
 
 void HelpMenu()
 {
-	cout << " ";
+	cout << "HELP MENU\n";
 }
 
 

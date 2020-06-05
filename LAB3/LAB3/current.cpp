@@ -150,20 +150,21 @@ void Current::Move(int push)
 	switch (push)
 	{
 	case 72:
-		currentSituation[selected]->Move(0, -2);
+		currentSituation[selected]->Move(0, -5);
 		break;
 	case 80:
-		currentSituation[selected]->Move(0, 2);
+		currentSituation[selected]->Move(0, 5);
 		break;
 	case 77:
-		currentSituation[selected]->Move(2, 0);
+		currentSituation[selected]->Move(5, 0);
 		break;
 	case 75:
-		currentSituation[selected]->Move(-2, 0);
+		currentSituation[selected]->Move(-5, 0);
 		break;
 	default:
 		break;
 	}
+	Refresh();
 }
 
 
