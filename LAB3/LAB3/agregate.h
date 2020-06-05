@@ -1,5 +1,4 @@
 #pragma once
-#include "vector.h"
 #include "current.h"
 
 class Agregate : public Shape 
@@ -9,5 +8,5 @@ public:
 	friend Current;
 
 private:
-	vctor<Shape*> vec;
+	mvector<Shape*> vec;
 };

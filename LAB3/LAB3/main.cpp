@@ -9,7 +9,7 @@ HDC hdc;
 
 int main(int argc, char* argv[])
 {
-	vctor<poit> a;
+	//vctor<poit> a;
 	hwnd = GetConsoleWindow();
 	hdc = GetDC(hwnd);
 	Current drawField;

@@ -1,7 +1,7 @@
 #include "header.h"
 #include "current.h"
 #include "utility.h"
-#include "vector.h"
+
 
 
 extern HWND hwnd;

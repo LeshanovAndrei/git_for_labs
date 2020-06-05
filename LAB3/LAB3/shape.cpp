@@ -1,6 +1,6 @@
 #include "header.h"
 #include "shape.h"
-#include "vector.h"
+
 
 void Shape::SetColor(int dR, int dG, int dB)
 {

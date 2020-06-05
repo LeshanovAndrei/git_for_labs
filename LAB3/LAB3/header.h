@@ -22,7 +22,6 @@
 
 // additional
 #include "current.h"
-#include "vector.h"
 #include "utility.h"
 
 using namespace std;
