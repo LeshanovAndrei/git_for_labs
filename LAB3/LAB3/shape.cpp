@@ -1,5 +1,6 @@
 #include "header.h"
 #include "shape.h"
+#include "vector.h"
 
 void Shape::SetColor(int dR, int dG, int dB)
 {
@@ -9,15 +10,15 @@ void Shape::SetColor(int dR, int dG, int dB)
 }
 
 Shape::Shape():
-    centerX(0),
-    centerY(0),
+    centerX(450),
+    centerY(500),
     radius(50),
     track(0),
     r(0),
     g(0),
     b(0)
 {
-    Show();
+    //Show();
 }
 
 Shape::~Shape()
@@ -34,7 +35,7 @@ Shape::Shape(const Shape& n):
     g(0),
     b(0)
 {
-    Show();
+    //Show();
 }
 
 void Shape::Show()
@@ -53,7 +54,7 @@ void Shape::Move(int dX, int dY)
 {
     if (track)
     {
-        tracking.Add({ centerX, centerY });
+        tracking.push_back({ centerX, centerY });
     }
     Hide();
     centerX += dX;
@@ -79,17 +80,14 @@ void Shape::Track()
 {
     if (track)
     {
-        tracking.Clear();
+        tracking.clear();
         track = 0;
     }
     else
         track = 1;
 }
 
-void Shape::Draw()
-{
 
-}
 
 int Shape::GetX()
 {
@@ -117,4 +115,9 @@ void Shape::SetY(int x)
 void Shape::SetRadius(int x)
 {
     radius = x;
+}
+
+int Shape::GetType()
+{
+    return 0;
 }

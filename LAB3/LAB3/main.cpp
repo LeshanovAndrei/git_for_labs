@@ -9,6 +9,7 @@ HDC hdc;
 
 int main(int argc, char* argv[])
 {
+	vctor<poit> a;
 	hwnd = GetConsoleWindow();
 	hdc = GetDC(hwnd);
 	Current drawField;
@@ -21,7 +22,6 @@ int main(int argc, char* argv[])
 	MenuPrint();
 	Rectangle(hdc, 300, 0, 1200, 1000);
 	variant = Num(0, 9);
-	Shape* p = new Star;
 	while (variant)
 	{
 		switch (variant)
@@ -29,6 +29,8 @@ int main(int argc, char* argv[])
 		case 1:
 			/*создание нового*/
 			drawField.AddObj();
+			drawField.Show();
+			break;
 		case 2:
 			/*удаление выбранного*/
 			drawField.DelObj();
@@ -43,7 +45,7 @@ int main(int argc, char* argv[])
 			break;
 		case 5:
 			/*Меню управления объекта*/
-			cout << "For help press - F1" << endl;
+			cout << "For help press - F1\n";
 			do
 			{
 				helpv = _getch();
@@ -62,6 +64,7 @@ int main(int argc, char* argv[])
 		case 8:
 			/*Запись конфигурации в файл*/
 			char adres[260];
+			cout << "Enter the adres of file\n";
 			cin >> adres;
 			drawField.WriteFile(adres);
 			break;
@@ -73,6 +76,7 @@ int main(int argc, char* argv[])
 		}
 		system("cls");
 		MenuPrint();
+		drawField.Refresh();
 		variant = Num(0, 9);
 	}
 	ReleaseDC(hwnd, hdc); 

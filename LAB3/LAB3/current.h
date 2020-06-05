@@ -1,5 +1,6 @@
 #pragma once
-#include "header.h"
+#include"header.h"
+#include "mvector.h"
 
 /*
 Поле рисования начинается с x = 300
@@ -31,6 +32,6 @@ public:
 private:
 	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
 	int selected;
-	vctor<Shape*> currentSituation;
+	mvector<Shape*> currentSituation;
 
 };

@@ -7,6 +7,9 @@
 #include <tchar.h>
 #include <conio.h>
 #include <cmath>
+//#include <vector>
+//#include <algorithm>
+
 
 
 // shapes
@@ -15,6 +18,7 @@
 #include "triangle.h"
 #include "star.h"
 #include "agregate.h"
+
 
 // additional
 #include "current.h"

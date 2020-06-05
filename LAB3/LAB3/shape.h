@@ -1,5 +1,8 @@
 #pragma once
-#include "header.h"
+#include "utility.h"
+#include "mvector.h"
+
+
 
 class Shape
 {
@@ -14,7 +17,7 @@ public:
 	void Reduce();
 	void Track();
 	void SetColor(int, int, int);
-	virtual void Draw();
+	virtual void Draw() = 0;
 	int GetX();
 	int GetY();
 	int GetRadius();
@@ -23,12 +26,12 @@ public:
 	void SetX(int);
 	void SetY(int);
 	void SetRadius(int);
+
 protected:
 	int r, g, b;
-
 	int centerX;
 	int centerY;
 	int radius;
 	bool track;
-	vctor<POINT> tracking;
+	mvector<poit> tracking;
 };

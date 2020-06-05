@@ -12,7 +12,7 @@ void Triangle::Draw()
 	{
 
 
-		for (size_t i = 0; i < tracking.Size(); i++)
+		for (size_t i = 0; i < tracking.size(); i++)
 		{
 			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
 		}

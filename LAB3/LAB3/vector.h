@@ -1,9 +1,11 @@
 #pragma once
+#include "header.h"
+#include "utility.h"
 
 using namespace std;
 
 // ќбъ€вление класса моего вектора
-template <typename T>
+template <class T>
 class vctor
 {
 #define NOT_DECREASING 0;

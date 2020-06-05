@@ -9,5 +9,5 @@ public:
 	friend Current;
 
 private:
-	vctor<Shape> vec;
+	vctor<Shape*> vec;
 };

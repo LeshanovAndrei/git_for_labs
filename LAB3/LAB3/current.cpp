@@ -1,6 +1,7 @@
 #include "header.h"
 #include "current.h"
 #include "utility.h"
+#include "vector.h"
 
 
 extern HWND hwnd;
@@ -13,10 +14,15 @@ Current::Current()
 
 void Current::Refresh()
 {
-	Rectangle(hdc, 300, 0, 1200, 1000);
+	
 	CollisionCheck();
-	for (size_t i = 0; i < currentSituation.Size(); i++)
+	Rectangle(hdc, 300, 0, 1200, 1000);
+	for (size_t i = 0; i < currentSituation.size(); i++)
 	{
+		/*if (i = selected)
+		{
+			currentSituation[i]->SetColor(255, 0, 0); ÍÅ ÐÀÁÎÒÀÅÒ, ÏÐÎÈÑÕÎÄÈÒ ÏÈÇÄÅÖ
+		}*/
 		currentSituation[i]->Draw();
 	}
 }
@@ -42,15 +48,19 @@ void Current::AddObj()
 	default:
 		return;
 	}
-	currentSituation.Add(tmp);
-	Select(currentSituation.Size() - 1);
-	Refresh();
+	currentSituation.push_back(tmp);
+	Select(currentSituation.size() - 1);
+	//Refresh();
 }
 
 void Current::DelObj()
 {
 	currentSituation[selected]->Hide();
-	currentSituation.Del(currentSituation[selected]);
+	currentSituation.erase(selected);
+	if (selected > 0)
+	{
+		selected--;
+	}
 	Refresh();
 }
 
@@ -61,7 +71,7 @@ int Current::Select()
 
 void Current::Select(int x)
 {
-	if (x < currentSituation.Size() || x < 0)
+	if (x < currentSituation.size() || x < 0)
 	{
 		selected = x;
 		currentSituation[selected]->SetColor(255, 0, 0);
@@ -71,7 +81,7 @@ void Current::Select(int x)
 
 void Current::CollisionCheck()
 {
-	for (int i = 0; i < currentSituation.Size(); i++)
+	for (int i = 0; i < currentSituation.size(); i++)
 	{
 		currentSituation[i]->SetColor(0, 0, 0);
 		if (i != selected)
@@ -163,9 +173,9 @@ void Current::WriteFile(char* adres)
 	out.open(adres);
 	if (out.is_open())
 	{
-		for (size_t i = 0; i < currentSituation.Size(); i++)
+		for (size_t i = 0; i < currentSituation.size(); i++)
 		{
-			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX << ' ' << currentSituation[i]->GetY << ' ' << currentSituation[i]->GetRadius() << endl;
+			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX() << ' ' << currentSituation[i]->GetY() << ' ' << currentSituation[i]->GetRadius() << endl;
 		}
 	}
 	else
@@ -176,6 +186,7 @@ void Current::WriteFile(char* adres)
 void Current::FromFile(char* adres)
 {
 	Shape* tempShape;
+	tempShape = new Square;
 	ifstream fin;
 	
 	fin.open(adres);
@@ -197,6 +208,7 @@ void Current::FromFile(char* adres)
 				tempShape = new Triangle;
 				break;
 			default:
+				tempShape = new Square;
 				break;
 			}
 			fin >> tmp;
@@ -206,7 +218,7 @@ void Current::FromFile(char* adres)
 			fin >> tmp;
 			tempShape->SetRadius(tmp);
 		}
-		currentSituation.Add(tempShape);
+		currentSituation.push_back(tempShape);
 	}
 	else
 	{

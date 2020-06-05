@@ -1,4 +1,4 @@
-#include "star.h"
+#include "header.h"
 
 extern HWND hwnd;
 extern HDC hdc;
@@ -11,7 +11,7 @@ void Star::Draw()
 	{
 
 
-		for (size_t i = 0; i < tracking.Size(); i++)
+		for (size_t i = 0; i < tracking.size(); i++)
 		{
 			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
 		}
