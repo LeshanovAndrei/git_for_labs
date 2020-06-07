@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 			/*Меню управления объекта*/
 			if (drawField.Size())
 			{
-				cout << "For help press - F1\n";
+				cout << "CONTROL MODE\nFor help press - F1\n";
 				do
 				{
 					helpv = _getch();
