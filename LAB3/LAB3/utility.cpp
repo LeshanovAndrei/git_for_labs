@@ -9,6 +9,7 @@ void MenuPrint()
 		<< "5. Control\n"
 		<< "6. Agregate all\n"
 		<< "7. Refresh\n"
+		<< "8. Upload configuration file\n"
 		<< "0. Exit\n"
 		<< "Enter number:";
 }
@@ -39,7 +40,10 @@ int Num(int a, int b)
 
 void HelpMenu()
 {
-	cout << "HELP MENU\n";
+	cout << "Keyboard arrows - movement\nEsc - exit control mode\n"
+		 << "Space - tracking on\n"
+		 << "Automatic movement:\n"
+		 << "W - up\nS - down\nD - right\nA - left\n";
 }
 
 

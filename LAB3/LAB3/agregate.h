@@ -5,7 +5,9 @@ class Agregate : public Shape
 {
 public:
 	Agregate(Current);
-	friend Current;
+	virtual void Draw();
+	friend class Current;
+	virtual Shape& Create();
 
 private:
 	mvector<Shape*> vec;

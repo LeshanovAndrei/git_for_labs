@@ -45,20 +45,29 @@ int main(int argc, char* argv[])
 			break;
 		case 5:
 			/*Меню управления объекта*/
-			cout << "For help press - F1\n";
-			do
+			if (drawField.Size())
 			{
-				helpv = _getch();
-				if (helpv == 59)
-					HelpMenu();
-				else
-					drawField.Move(helpv);
-				
-			} while (helpv != 27);
+				cout << "For help press - F1\n";
+				do
+				{
+					helpv = _getch();
+					if (helpv == 59)
+						HelpMenu();
+					else
+						drawField.Move(helpv);
+
+				} while (helpv != 27);
+			}
+			else
+			{
+				cout << "Add an object first\n";
+				system("pause");
+			}
 
 			break;
 		case 6:
 			/*Агрегирование всех объектов*/
+			drawField.Agregation();
 			break;
 		case 7:
 			/*Перезагрузка поля рисования*/

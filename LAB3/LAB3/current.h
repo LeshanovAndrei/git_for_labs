@@ -6,16 +6,19 @@
 Поле рисования начинается с x = 300
 */
 
-class Current //Класс для управления текущей ситуацией поля рисования
+class Current //Класс для управления полем рисования
 {
 public:
+	friend class Agregate;
 	Current();
 	void Refresh();
 	void AddObj();
 	void DelObj();
-	int Select();
+	int  Select();
 	void Select(int);
 	bool BorderCheck();
+	size_t Size();
+	void Agregation();
 
 	//Контролы объекта
 	void Show();
@@ -30,7 +33,7 @@ public:
 	void FromFile(char*);
 
 private:
-	void CollisionCheck();// Возвращает номер старшей фигуры, с которой пересекается выбранная, в параметры
+	void CollisionCheck();
 	int selected;
 	mvector<Shape*> currentSituation;
 

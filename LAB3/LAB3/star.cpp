@@ -17,6 +17,7 @@ void Star::Draw()
 		}
 	}
 	POINT poly[6];
+	//Формула звездочки посчитана вручную
 	poly[0].x = centerX;
 	poly[0].y = centerY - radius;
 	poly[1].x = centerX - (radius * 0.59);
@@ -32,7 +33,10 @@ void Star::Draw()
 	Polyline(hdc, poly, 6);
 	if (track)
 	{
-		SetPixel(hdc, centerX, centerY, RGB(r, g, b));
+		for (size_t i = 0; i < tracking.size(); i++)
+		{
+			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
+		}
 	}
 	DeleteObject(hPen);
 }
@@ -40,4 +44,9 @@ void Star::Draw()
 int Star::GetType()
 {
 	return 2;
+}
+
+Shape& Star::Create()
+{
+	return *new Star(*this);
 }

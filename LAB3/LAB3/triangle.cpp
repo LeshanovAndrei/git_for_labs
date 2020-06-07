@@ -29,7 +29,10 @@ void Triangle::Draw()
 	Polyline(hdc, poly, 4);
 	if (track)
 	{
-		SetPixel(hdc, centerX, centerY, RGB(r, g, b));
+		for (size_t i = 0; i < tracking.size(); i++)
+		{
+			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
+		}
 	}
 	DeleteObject(hPen);
 }
@@ -37,4 +40,9 @@ void Triangle::Draw()
 int Triangle::GetType()
 {
 	return 3;
+}
+
+Shape& Triangle::Create()
+{
+	return *new Triangle(*this);
 }

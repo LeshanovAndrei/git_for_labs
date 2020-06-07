@@ -74,7 +74,7 @@ void Current::Select(int x)
 	if (x < currentSituation.size() || x < 0)
 	{
 		selected = x;
-		currentSituation[selected]->SetColor(255, 0, 0);
+		//currentSituation[selected]->SetColor(255, 0, 0);
 	}
 	Refresh();
 }
@@ -97,15 +97,15 @@ void Current::CollisionCheck()
 	}
 }
 
-bool Current::BorderCheck()
+bool Current::BorderCheck()//1 if border
 {
-	if ((currentSituation[selected]->GetX()) - (currentSituation[selected]->GetRadius()) < 300
+	if ((currentSituation[selected]->GetX()) - (currentSituation[selected]->GetRadius()) - 10 < 300 //Левая граница
 		||
-		(currentSituation[selected]->GetY()) + (currentSituation[selected]->GetRadius()) > 900
+		(currentSituation[selected]->GetY()) + (currentSituation[selected]->GetRadius()) + 10 > 605 // Нижняя граница
 		||
-		(currentSituation[selected]->GetX()) + (currentSituation[selected]->GetRadius()) > 1100
+		(currentSituation[selected]->GetX()) + (currentSituation[selected]->GetRadius()) + 10 > 1050 // Правая граница
 		||
-		(currentSituation[selected]->GetY()) - (currentSituation[selected]->GetRadius()) < 0)
+		(currentSituation[selected]->GetY()) - (currentSituation[selected]->GetRadius()) - 10 < 0) // Верхняя граница
 	{
 		return true;
 	}
@@ -117,19 +117,22 @@ bool Current::BorderCheck()
 
 void Current::Show()
 {
-	currentSituation[selected]->Show();
+	if(selected >= 0)
+		currentSituation[selected]->Show();
 	Refresh();
 }
 
 void Current::Hide()
 {
-	currentSituation[selected]->Hide();
+	if (selected >= 0)
+		currentSituation[selected]->Hide();
 	Refresh();
 }
 
 void Current::Increase()
 {
-	currentSituation[selected]->Increase();
+	if (selected >= 0)
+		currentSituation[selected]->Increase();
 	Refresh();
 }
 
@@ -141,7 +144,8 @@ void Current::Reduce()
 
 void Current::Track()
 {
-	currentSituation[selected]->Track();
+	if (selected >= 0)
+		currentSituation[selected]->Track();
 	Refresh();
 }
 
@@ -149,19 +153,74 @@ void Current::Move(int push)
 {
 	switch (push)
 	{
-	case 72:
-		currentSituation[selected]->Move(0, -5);
+	case 72: //Вверх
+			currentSituation[selected]->Move(0, -10);
+		if (BorderCheck())
+			currentSituation[selected]->Move(0, 15);
 		break;
-	case 80:
-		currentSituation[selected]->Move(0, 5);
+	case 80: //Вниз
+			currentSituation[selected]->Move(0, 10);
+		if (BorderCheck())
+			currentSituation[selected]->Move(0, -15);
 		break;
-	case 77:
-		currentSituation[selected]->Move(5, 0);
+	case 77: //Вправо
+			currentSituation[selected]->Move(10, 0);
+		if (BorderCheck())
+			currentSituation[selected]->Move(-15, 0);
 		break;
-	case 75:
-		currentSituation[selected]->Move(-5, 0);
+	case 75: //Влево
+			currentSituation[selected]->Move(-10, 0);
+		if (BorderCheck())
+			currentSituation[selected]->Move(15, 0);
+		break;
+	case 32:
+		currentSituation[selected]->Track();
+		break;
+	case 119://Вверх W
+	case 230:
+		while (!BorderCheck())
+		{
+			currentSituation[selected]->Move(0, -10);
+			Sleep(100);
+		}
+		currentSituation[selected]->Move(0, 15);
+		break;
+	case 100://Вправо D
+	case 162:
+		while (!BorderCheck())
+		{
+			currentSituation[selected]->Move(10, 0);
+			Sleep(100);
+		}
+		currentSituation[selected]->Move(-15, 0);
+		break;
+	case 115://Вниз S
+	case 63:
+	case 235:
+		while (!BorderCheck())
+		{
+			currentSituation[selected]->Move(0, 10);
+			Sleep(100);
+		}
+		currentSituation[selected]->Move(0, -15);
+		break;
+	case 97://Влево A
+	case 228:
+		while (!BorderCheck())
+		{
+			currentSituation[selected]->Move(-10, 0);
+			Sleep(100);
+		}
+		currentSituation[selected]->Move(15, 0);
+		break;
+	case 45:
+		Reduce();
+		break;
+	case 43:
+		Increase();
 		break;
 	default:
+		//cout << push << " is wrong button\n";
 		break;
 	}
 	Refresh();
@@ -225,4 +284,16 @@ void Current::FromFile(char* adres)
 	{
 		cout << "File reading error!!!";
 	}
+}
+
+size_t Current::Size()
+{
+	return currentSituation.size();
+}
+
+void Current::Agregation()
+{
+	Shape* tmp = new Agregate(*this);
+	currentSituation.push_back(tmp);
+	selected = currentSituation.size() - 1;
 }

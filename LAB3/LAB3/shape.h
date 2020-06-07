@@ -9,7 +9,8 @@ class Shape
 public:
 	Shape();
 	~Shape();
-	Shape(const Shape&);
+	/*Shape(const Shape&);*/
+	virtual Shape& Create() = 0;
 	void Show();
 	void Hide();
 	void Move(int, int);
@@ -33,5 +34,5 @@ protected:
 	int centerY;
 	int radius;
 	bool track;
-	mvector<poit> tracking;
+	mvector<point> tracking;
 };

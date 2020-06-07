@@ -9,8 +9,6 @@ void Square::Draw()
 	SelectObject(hdc, hPen); //Объект делается текущим
 	if (track)
 	{
-
-
 		for (size_t i = 0; i < tracking.size(); i++)
 		{
 			SetPixel(hdc, tracking[i].x, tracking[i].y, RGB(r, g, b));
@@ -35,4 +33,9 @@ void Square::Draw()
 int Square::GetType()
 {
 	return 1;
+}
+
+Shape& Square:: Create()
+{
+	return *new Square(*this);
 }

@@ -26,17 +26,17 @@ Shape::~Shape()
     Hide();
 }
 
-Shape::Shape(const Shape& n):
-    centerX(n.centerX),
-    centerY(n.centerY),
-    radius(n.radius),
-    track(0),
-    r(0),
-    g(0),
-    b(0)
-{
-    //Show();
-}
+//Shape::Shape(const Shape& n):
+//    centerX(n.centerX),
+//    centerY(n.centerY),
+//    radius(n.radius),
+//    track(0),
+//    r(0),
+//    g(0),
+//    b(0)
+//{
+//    //Show();
+//}
 
 void Shape::Show()
 {

@@ -10,26 +10,27 @@ void HelpMenu();
 
 int CenterDistance(int x0, int y0, int x1, int y1);
 
-struct poit
+struct point
 {
 	int x;
 	int y;
-	bool operator !=(poit a)
+	bool operator !=(point a)
 	{
 		if (x != a.x || y != a.y)
 			return true;
 		return false;
 	}
-	bool operator <(poit a)
+	bool operator <(point a)
 	{
 		if (x < a.x && y < a.y)
 			return true;
 		return false;
 	}
-	bool operator >(poit a)
+	bool operator >(point a)
 	{
 		if (x < a.x && y < a.y)
 			return false;
 		return true;
 	}
 };
+
