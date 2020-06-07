@@ -32,10 +32,15 @@ void Square::Draw()
 
 int Square::GetType()
 {
-	return 1;
+	return -1;
 }
 
 Shape& Square:: Create()
 {
 	return *new Square(*this);
+}
+
+mvector<int> Square:: AgregationTypes()
+{
+	return *new mvector<int>{ 0 };
 }

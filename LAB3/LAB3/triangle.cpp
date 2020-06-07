@@ -39,10 +39,15 @@ void Triangle::Draw()
 
 int Triangle::GetType()
 {
-	return 3;
+	return -3;
 }
 
 Shape& Triangle::Create()
 {
 	return *new Triangle(*this);
+}
+
+mvector<int> Triangle::AgregationTypes()
+{
+	return *new mvector<int>{ 0 };
 }

@@ -43,10 +43,15 @@ void Star::Draw()
 
 int Star::GetType()
 {
-	return 2;
+	return -2;
 }
 
 Shape& Star::Create()
 {
 	return *new Star(*this);
+}
+
+mvector<int> Star::AgregationTypes()
+{
+	return *new mvector<int>{ 0 };
 }

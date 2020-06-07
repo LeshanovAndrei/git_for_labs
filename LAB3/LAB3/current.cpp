@@ -21,7 +21,7 @@ void Current::Refresh()
 	{
 		/*if (i = selected)
 		{
-			currentSituation[i]->SetColor(255, 0, 0); Õ≈ –¿¡Œ“¿≈“, œ–Œ»—’Œƒ»“ œ»«ƒ≈÷
+			currentSituation[i]->SetColor(255, 0, 0); 
 		}*/
 		currentSituation[i]->Draw();
 	}
@@ -220,7 +220,6 @@ void Current::Move(int push)
 		Increase();
 		break;
 	default:
-		//cout << push << " is wrong button\n";
 		break;
 	}
 	Refresh();
@@ -235,11 +234,23 @@ void Current::WriteFile(char* adres)
 	{
 		for (size_t i = 0; i < currentSituation.size(); i++)
 		{
-			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX() << ' ' << currentSituation[i]->GetY() << ' ' << currentSituation[i]->GetRadius() << endl;
+			int tmp = currentSituation[i]->GetType();
+			if (tmp < 0)
+				out << tmp << ' ' << currentSituation[i]->GetX() << ' ' << currentSituation[i]->GetY() << ' ' << currentSituation[i]->GetRadius() << endl;
+			else
+			{
+				out << tmp << ' ';
+				for (size_t j = 0; j < tmp*2; j++)
+				{
+					out << currentSituation[i]->AgregationTypes()[j] << ' ';
+				}
+				out << currentSituation[i]->GetX() << ' ' << currentSituation[i]->GetY() << ' ' << currentSituation[i]->GetRadius();
+			}
 		}
 	}
 	else
 		cout << "File writing Error!!!";
+
 }
 
 
@@ -248,37 +259,62 @@ void Current::FromFile(char* adres)
 	Shape* tempShape;
 	tempShape = new Square;
 	ifstream fin;
-	
+	int tmp;
 	fin.open(adres);
 	if (fin.is_open())
 	{
-		for (; !fin.eof();)
+		while (/*!fin.eof()*/fin >> tmp)
 		{
-			int tmp;
-			fin >> tmp;//“ËÔ
+			
+			//fin >> tmp;//“ËÔ
 			switch (tmp)
 			{
-			case 1:
+			case -1:
 				tempShape = new Square;
 				break;
-			case 2 :
+			case -2 :
 				tempShape = new Star;
 				break;
-			case 3:
+			case -3:
 				tempShape = new Triangle;
 				break;
 			default:
-				tempShape = new Square;
+				mvector<Shape*> forAgr;
+				for (size_t i = 0; i < tmp; i++)
+				{
+					int agTmp;
+					Shape* agrTmp = new Square;
+					fin >> agTmp;
+					switch (agTmp)
+					{
+					case -1:
+						agrTmp = new Square;
+						break;
+					case -2:
+						agrTmp = new Star;
+						break;
+					case -3:
+						agrTmp = new Triangle;
+						break;
+						
+					}
+					fin >> agTmp;
+					agrTmp->SetRadius(agTmp);
+					forAgr.push_back(agrTmp);
+				}
+				tempShape = new Agregate(forAgr);
 				break;
 			}
-			fin >> tmp;
+			fin >> tmp; // ÷ÂÌÚ
 			tempShape->SetX(tmp);
 			fin >> tmp;
 			tempShape->SetY(tmp);
-			fin >> tmp;
+			fin >> tmp; // –‡‰ËÛÒ
 			tempShape->SetRadius(tmp);
+			currentSituation.push_back(tempShape);
+			selected++;
 		}
-		currentSituation.push_back(tempShape);
+		
 	}
 	else
 	{

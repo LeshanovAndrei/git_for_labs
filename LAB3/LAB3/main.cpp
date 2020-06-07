@@ -7,7 +7,7 @@ HDC hdc;
 
 
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
 	//vctor<poit> a;
 	hwnd = GetConsoleWindow();
@@ -16,11 +16,13 @@ int main(int argc, char* argv[])
 	if (argc > 1)
 	{
 		drawField.FromFile(argv[1]);
+		
 	}
 	int helpv;
 	int variant;
 	MenuPrint();
 	Rectangle(hdc, 300, 0, 1200, 1000);
+	drawField.Refresh();
 	variant = Num(0, 9);
 	while (variant)
 	{

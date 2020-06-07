@@ -23,7 +23,7 @@ public:
 	int GetY();
 	int GetRadius();
 	virtual int GetType();
-
+	virtual mvector<int> AgregationTypes() = 0;
 	void SetX(int);
 	void SetY(int);
 	void SetRadius(int);
