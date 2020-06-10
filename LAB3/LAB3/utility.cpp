@@ -7,11 +7,11 @@ void MenuPrint()
 		<< "3. Next object\n"
 		<< "4. Prev object\n"
 		<< "5. Control\n"
-		<< "6. Agregate all\n"
+		<< "6. Agregate\n"
 		<< "7. Refresh\n"
 		<< "8. Upload configuration file\n"
-		<< "0. Exit\n"
-		<< "Enter number:";
+		<< "0. Exit\n";
+		
 }
 
 void CreateMenuPrint()

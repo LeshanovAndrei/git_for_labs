@@ -93,6 +93,7 @@ void Current::CollisionCheck()
 				>=
 				CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
 			{
+				
 				currentSituation[selected]->SetColor(0, 255, 0);
 				currentSituation[i]->SetColor(0, 255, 0);
 			}
@@ -134,15 +135,20 @@ void Current::Hide()
 
 void Current::Increase()
 {
-	if (selected >= 0)
+	if (!BorderCheck())
+	{
 		currentSituation[selected]->Increase();
-	Refresh();
+		Refresh();
+	}
 }
 
 void Current::Reduce()
 {
-	currentSituation[selected]->Reduce();
-	Refresh();
+
+	
+		currentSituation[selected]->Reduce();
+		Refresh();
+	
 }
 
 void Current::Track()
@@ -358,7 +364,73 @@ size_t Current::Size()
 
 void Current::Agregation()
 {
-	Shape* tmp = new Agregate(*this);
-	currentSituation.push_back(tmp);
-	selected = currentSituation.size() - 1;
+	system("cls");
+	cout << "Objects:\n";
+	for (size_t i = 0; i < currentSituation.size(); i++)
+	{
+		cout << "#" << i + 1 << ", ";
+		switch (currentSituation[i]->GetType())
+		{
+		case -1:
+			cout << "Square";
+			break;
+		case -2:
+			cout << "Star";
+			break;
+		case -3:
+			cout << "Triangle";
+			break;
+		default:
+			cout << "Agregate";
+		}
+		cout << '\n';
+	}
+	cout << "How many objects to agregate?\n";
+	int numb, tmpr;
+	cin >> numb;
+	mvector<Shape*> toAgr;
+	cout << "Enter numbres of objects to agregate\n";
+	if (numb > 0 && numb < currentSituation.size())
+	{
+		for (size_t i = 0; i < numb; i++)
+		{
+			cin >> tmpr;
+			if (tmpr > 0 && tmpr < currentSituation.size())
+				toAgr.push_back(currentSituation[tmpr]);
+		}
+		Shape* tmp = new Agregate(toAgr);
+		currentSituation.push_back(tmp);
+		selected = currentSituation.size() - 1;
+	}
+	if (numb == currentSituation.size())
+	{
+		Shape* tmp = new Agregate(currentSituation);
+		currentSituation.push_back(tmp);
+		selected = currentSituation.size() - 1;
+	}
+}
+
+void Current::ObjectInfoOut()
+{
+	if (currentSituation.size() > 0)
+	{
+
+
+		cout << "#" << selected + 1 << ", ";
+		switch (currentSituation[selected]->GetType())
+		{
+		case -1:
+			cout << "Square";
+			break;
+		case -2:
+			cout << "Star";
+			break;
+		case -3:
+			cout << "Triangle";
+			break;
+		default:
+			cout << "Agregate";
+		}
+		cout << '\n';
+	}
 }

@@ -20,6 +20,8 @@ int main(int argc, char** argv)
 	int helpv;
 	int variant;
 	MenuPrint();
+	drawField.ObjectInfoOut();
+	cout << "Enter number: ";
 	Rectangle(hdc, 300, 0, 1200, 1000);
 	drawField.Refresh();
 	variant = Num(0, 9);
@@ -89,6 +91,8 @@ int main(int argc, char** argv)
 		}
 		system("cls");
 		MenuPrint();
+		drawField.ObjectInfoOut();
+		cout << "Enter number: ";
 		drawField.Refresh();
 		variant = Num(0, 9);
 	}

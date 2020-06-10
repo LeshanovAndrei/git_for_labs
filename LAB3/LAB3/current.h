@@ -19,7 +19,7 @@ public:
 	bool BorderCheck();
 	size_t Size();
 	void Agregation();
-
+	void ObjectInfoOut();
 	//Контролы объекта
 	void Show();
 	void Hide();
