@@ -55,14 +55,11 @@ void Current::AddObj()
 
 void Current::DelObj()
 {
-	if (currentSituation.size() > 0)
+	currentSituation[selected]->Hide();
+	currentSituation.erase(selected);
+	if (selected > 0)
 	{
-		currentSituation[selected]->Hide();
-		currentSituation.erase(selected);
-		if (selected > 0)
-		{
-			selected--;
-		}
+		selected--;
 	}
 	Refresh();
 }
@@ -74,7 +71,7 @@ int Current::Select()
 
 void Current::Select(int x)
 {
-	if (x < currentSituation.size() && x >= 0)
+	if (x < currentSituation.size() || x < 0)
 	{
 		selected = x;
 		//currentSituation[selected]->SetColor(255, 0, 0);
@@ -185,7 +182,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(0, -10);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(0, 15);
 		break;
@@ -195,7 +191,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(10, 0);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(-15, 0);
 		break;
@@ -206,7 +201,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(0, 10);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(0, -15);
 		break;
@@ -216,7 +210,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(-10, 0);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(15, 0);
 		break;
@@ -226,29 +219,7 @@ void Current::Move(int push)
 	case 43:
 		Increase();
 		break;
-	case 122:
-	case 239://Z
-		if (currentSituation[selected]->GetX() > 450)
-		{
-			currentSituation[selected]->Move(-(currentSituation[selected]->GetX() - 450), 0);
-		}
-		else
-		{
-			currentSituation[selected]->Move((450 - currentSituation[selected]->GetX()), 0);
-		}
-		if (currentSituation[selected]->GetY() > 500)
-		{
-			currentSituation[selected]->Move(0, -(currentSituation[selected]->GetY() - 500));
-		}
-		else
-		{
-			currentSituation[selected]->Move(0, (500 - currentSituation[selected]->GetY()));
-		}
-		currentSituation[selected]->SetRadius(50);
-		break;
-		break;
 	default:
-		//cout << push << " ";
 		break;
 	}
 	Refresh();

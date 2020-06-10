@@ -43,9 +43,7 @@ void HelpMenu()
 	cout << "Keyboard arrows - movement\nEsc - exit control mode\n"
 		 << "Space - tracking on\n"
 		 << "Automatic movement:\n"
-		 << "W - up\nS - down\nD - right\nA - left\n"
-		 << "+ - Increase object size\n- - Reduce object size\n"
-		 << "Z - Start state\n";
+		 << "W - up\nS - down\nD - right\nA - left\n";
 }
 
 
