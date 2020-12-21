@@ -13,6 +13,5 @@ public:
 	virtual mvector<int> AgregationTypes();
 
 private:
-	int startRadius;
 	mvector<Shape*> vec;
 };

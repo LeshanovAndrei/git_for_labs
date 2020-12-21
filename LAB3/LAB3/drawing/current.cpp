@@ -55,14 +55,11 @@ void Current::AddObj()
 
 void Current::DelObj()
 {
-	if (currentSituation.size() > 0)
+	currentSituation[selected]->Hide();
+	currentSituation.erase(selected);
+	if (selected > 0)
 	{
-		currentSituation[selected]->Hide();
-		currentSituation.erase(selected);
-		if (selected > 0)
-		{
-			selected--;
-		}
+		selected--;
 	}
 	Refresh();
 }
@@ -74,7 +71,7 @@ int Current::Select()
 
 void Current::Select(int x)
 {
-	if (x < currentSituation.size() && x >= 0)
+	if (x < currentSituation.size() || x < 0)
 	{
 		selected = x;
 		//currentSituation[selected]->SetColor(255, 0, 0);
@@ -93,7 +90,6 @@ void Current::CollisionCheck()
 				>=
 				CenterDistance(currentSituation[selected]->GetX(), currentSituation[selected]->GetY(), currentSituation[i]->GetX(), currentSituation[i]->GetY())))
 			{
-				
 				currentSituation[selected]->SetColor(0, 255, 0);
 				currentSituation[i]->SetColor(0, 255, 0);
 			}
@@ -135,20 +131,15 @@ void Current::Hide()
 
 void Current::Increase()
 {
-	if (!BorderCheck())
-	{
+	if (selected >= 0)
 		currentSituation[selected]->Increase();
-		Refresh();
-	}
+	Refresh();
 }
 
 void Current::Reduce()
 {
-
-	
-		currentSituation[selected]->Reduce();
-		Refresh();
-	
+	currentSituation[selected]->Reduce();
+	Refresh();
 }
 
 void Current::Track()
@@ -191,7 +182,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(0, -10);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(0, 15);
 		break;
@@ -201,7 +191,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(10, 0);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(-15, 0);
 		break;
@@ -212,7 +201,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(0, 10);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(0, -15);
 		break;
@@ -222,7 +210,6 @@ void Current::Move(int push)
 		{
 			currentSituation[selected]->Move(-10, 0);
 			Sleep(100);
-			Refresh();
 		}
 		currentSituation[selected]->Move(15, 0);
 		break;
@@ -232,29 +219,7 @@ void Current::Move(int push)
 	case 43:
 		Increase();
 		break;
-	case 122:
-	case 239://Z
-		if (currentSituation[selected]->GetX() > 450)
-		{
-			currentSituation[selected]->Move(-(currentSituation[selected]->GetX() - 450), 0);
-		}
-		else
-		{
-			currentSituation[selected]->Move((450 - currentSituation[selected]->GetX()), 0);
-		}
-		if (currentSituation[selected]->GetY() > 500)
-		{
-			currentSituation[selected]->Move(0, -(currentSituation[selected]->GetY() - 500));
-		}
-		else
-		{
-			currentSituation[selected]->Move(0, (500 - currentSituation[selected]->GetY()));
-		}
-		currentSituation[selected]->SetRadius(50);
-		break;
-		break;
 	default:
-		//cout << push << " ";
 		break;
 	}
 	Refresh();
@@ -364,73 +329,7 @@ size_t Current::Size()
 
 void Current::Agregation()
 {
-	system("cls");
-	cout << "Objects:\n";
-	for (size_t i = 0; i < currentSituation.size(); i++)
-	{
-		cout << "#" << i + 1 << ", ";
-		switch (currentSituation[i]->GetType())
-		{
-		case -1:
-			cout << "Square";
-			break;
-		case -2:
-			cout << "Star";
-			break;
-		case -3:
-			cout << "Triangle";
-			break;
-		default:
-			cout << "Agregate";
-		}
-		cout << '\n';
-	}
-	cout << "How many objects to agregate?\n";
-	int numb, tmpr;
-	cin >> numb;
-	mvector<Shape*> toAgr;
-	cout << "Enter numbres of objects to agregate\n";
-	if (numb > 0 && numb < currentSituation.size())
-	{
-		for (size_t i = 0; i < numb; i++)
-		{
-			cin >> tmpr;
-			if (tmpr > 0 && tmpr < currentSituation.size())
-				toAgr.push_back(currentSituation[tmpr]);
-		}
-		Shape* tmp = new Agregate(toAgr);
-		currentSituation.push_back(tmp);
-		selected = currentSituation.size() - 1;
-	}
-	if (numb == currentSituation.size())
-	{
-		Shape* tmp = new Agregate(currentSituation);
-		currentSituation.push_back(tmp);
-		selected = currentSituation.size() - 1;
-	}
-}
-
-void Current::ObjectInfoOut()
-{
-	if (currentSituation.size() > 0)
-	{
-
-
-		cout << "#" << selected + 1 << ", ";
-		switch (currentSituation[selected]->GetType())
-		{
-		case -1:
-			cout << "Square";
-			break;
-		case -2:
-			cout << "Star";
-			break;
-		case -3:
-			cout << "Triangle";
-			break;
-		default:
-			cout << "Agregate";
-		}
-		cout << '\n';
-	}
+	Shape* tmp = new Agregate(*this);
+	currentSituation.push_back(tmp);
+	selected = currentSituation.size() - 1;
 }

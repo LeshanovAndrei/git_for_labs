@@ -20,14 +20,14 @@ void Star::Draw()
 	//Формула звездочки посчитана вручную
 	poly[0].x = centerX;
 	poly[0].y = centerY - radius;
-	poly[1].x = centerX - static_cast<int>(radius * 0.59);
-	poly[1].y = centerY + static_cast<int>(radius * 0.81);
-	poly[2].x = centerX + static_cast<int>(radius + 0.951);
-	poly[2].y = centerY - static_cast<int>(radius * 0.31);
-	poly[3].x = centerX - static_cast<int>(radius + 0.951);
-	poly[3].y = centerY - static_cast<int>(radius * 0.31);
-	poly[4].x = centerX + static_cast<int>(radius * 0.59);
-	poly[4].y = centerY + static_cast<int>(radius * 0.81);
+	poly[1].x = centerX - (radius * 0.59);
+	poly[1].y = centerY + (radius * 0.81);
+	poly[2].x = centerX + (radius + 0.951);
+	poly[2].y = centerY - (radius * 0.31);
+	poly[3].x = centerX - (radius + 0.951);
+	poly[3].y = centerY - (radius * 0.31);
+	poly[4].x = centerX + (radius * 0.59);
+	poly[4].y = centerY + (radius * 0.81);
 	poly[5].x = centerX;
 	poly[5].y = centerY - radius;
 	Polyline(hdc, poly, 6);

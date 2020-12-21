@@ -7,11 +7,11 @@ void MenuPrint()
 		<< "3. Next object\n"
 		<< "4. Prev object\n"
 		<< "5. Control\n"
-		<< "6. Agregate\n"
+		<< "6. Agregate all\n"
 		<< "7. Refresh\n"
 		<< "8. Upload configuration file\n"
-		<< "0. Exit\n";
-		
+		<< "0. Exit\n"
+		<< "Enter number:";
 }
 
 void CreateMenuPrint()
@@ -43,9 +43,7 @@ void HelpMenu()
 	cout << "Keyboard arrows - movement\nEsc - exit control mode\n"
 		 << "Space - tracking on\n"
 		 << "Automatic movement:\n"
-		 << "W - up\nS - down\nD - right\nA - left\n"
-		 << "+ - Increase object size\n- - Reduce object size\n"
-		 << "Z - Start state\n";
+		 << "W - up\nS - down\nD - right\nA - left\n";
 }
 
 

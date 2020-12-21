@@ -15,17 +15,16 @@ void Square::Draw()
 		}
 	}
 	POINT poly[5];
-	int offset = static_cast<int>(radius / 1.414);
-	poly[0].x = centerX - offset;
-	poly[0].y = centerY - offset;
-	poly[1].x = centerX + offset;
-	poly[1].y = centerY - offset;
-	poly[2].x = centerX + offset;
-	poly[2].y = centerY + offset;
-	poly[3].x = centerX - offset;
-	poly[3].y = centerY + offset;
-	poly[4].x = centerX - offset;
-	poly[4].y = centerY - offset;
+	poly[0].x = centerX - (radius / 1.414);
+	poly[0].y = centerY - (radius / 1.414);
+	poly[1].x = centerX + (radius / 1.414);
+	poly[1].y = centerY - (radius / 1.414);
+	poly[2].x = centerX + (radius / 1.414);
+	poly[2].y = centerY + (radius / 1.414);
+	poly[3].x = centerX - (radius / 1.414);
+	poly[3].y = centerY + (radius / 1.414);
+	poly[4].x = centerX - (radius / 1.414);
+	poly[4].y = centerY - (radius / 1.414);
 	Polyline(hdc, poly, 5);
 	
 	DeleteObject(hPen);
