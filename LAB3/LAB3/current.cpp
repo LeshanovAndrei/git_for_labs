@@ -165,7 +165,7 @@ void Current::WriteFile(char* adres)
 	{
 		for (size_t i = 0; i < currentSituation.Size(); i++)
 		{
-			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX << ' ' << currentSituation[i]->GetY << ' ' << currentSituation[i]->GetRadius() << endl;
+			out << currentSituation[i]->GetType() << ' ' << currentSituation[i]->GetX() << ' ' << currentSituation[i]->GetY() << ' ' << currentSituation[i]->GetRadius() << endl;
 		}
 	}
 	else
